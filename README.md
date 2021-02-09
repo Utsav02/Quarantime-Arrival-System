@@ -1,4 +1,4 @@
-# Student Arrival System
+# model.model Arrival System
 
 ##Quarantine Database
 
@@ -7,7 +7,7 @@ A *system* that provides the user:
 - to input incoming students onto the campus
 - to see where the students are quarantining themselves in
 
-This ***Student Arrival System*** is designed for any university which needs to track
+This ***model.model Arrival System*** is designed for any university which needs to track
 how many students have arrived at the campus and where they are staying.
 
 This can take in the name of the student, country of arrival, quarantine residence/hotel,
