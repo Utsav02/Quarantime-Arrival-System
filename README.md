@@ -1,11 +1,28 @@
-# My Personal Project
+# Student Arrival System
 
-## A subtitle
+##Quarantine Database
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+A *system* that provides the user:
+- the ability to track number of students in quarantine
+- to input incoming students onto the campus
+- to see where the students are quarantining themselves in
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+This ***Student Arrival System*** is designed for any university which needs to track
+how many students have arrived at the campus and where they are staying.
+
+This can take in the name of the student, country of arrival, quarantine residence/hotel,
+covid-19 tested (yes/no).
+
+This project is of interest to me due to the situation we have ourselves in currently.
+While there were other ideas in mind, I went with this one mostly because it felt fitting. 
+Moreover, I thought the idea of filtering how many students are in quarantine, their number of 
+days left and other factors interested me too.
+
+##User Story
+The user should be able to
+- add new students to the database
+- delete students from database
+- see where the students are quarantining themselves in
+- see all names of students who have arrived on campus
+
+:
