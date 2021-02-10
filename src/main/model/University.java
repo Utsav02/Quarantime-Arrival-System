@@ -4,14 +4,13 @@ package model;
 import java.util.ArrayList;
 
 public class University {
-    private static String uniName = "University of British Columbia";
 
     public University() {
 
     }
 
-    ArrayList<Student> domestic = new ArrayList<Student>();
-    ArrayList<Student> international = new ArrayList<Student>();
+    ArrayList<Student> domestic = new ArrayList<>();
+    ArrayList<Student> international = new ArrayList<>();
 
     public void addToDomestic(Student student) {
         domestic.add(student);
@@ -22,24 +21,24 @@ public class University {
     }
 
     public void searchName(String name) {
-        for (int i = 0; i < domestic.size(); i++) {
-            if (domestic.get(i).getName().equals(name)) {
-                System.out.println("Name: " + domestic.get(i).getName());
-                System.out.println("Covid Report: " + domestic.get(i).getTestReport());
-                System.out.println("Staying at: " + domestic.get(i).getLocation());
-                System.out.println("Reached Campus on: " + domestic.get(i).getArrivalDate());
-                System.out.println("Flew in from: " + domestic.get(i).getCountry());
+        for (Student value : domestic) {
+            if (value.getName().equals(name)) {
+                System.out.println("Name: " + value.getName());
+                System.out.println("Covid Report: " + value.getTestReport());
+                System.out.println("Staying at: " + value.getLocation());
+                System.out.println("Reached Campus on: " + value.getArrivalDate());
+                System.out.println("Flew in from: " + value.getCountry());
 
             }
         }
 
-        for (int i = 0; i < international.size(); i++) {
-            if (international.get(i).getName().equals(name)) {
-                System.out.println("Name: " + international.get(i).getName());
-                System.out.println("Covid Report: " + international.get(i).getTestReport());
-                System.out.println("Staying at: " + international.get(i).getLocation());
-                System.out.println("Reached Campus on: " + international.get(i).getArrivalDate());
-                System.out.println("Flew in from: " + international.get(i).getCountry());
+        for (Student student : international) {
+            if (student.getName().equals(name)) {
+                System.out.println("Name: " + student.getName());
+                System.out.println("Covid Report: " + student.getTestReport());
+                System.out.println("Staying at: " + student.getLocation());
+                System.out.println("Reached Campus on: " + student.getArrivalDate());
+                System.out.println("Flew in from: " + student.getCountry());
             } else {
                 System.out.println("Student not found");
             }
@@ -47,42 +46,43 @@ public class University {
 
     }
 
-    public int totalStudents() {
+    public void totalStudents() {
         int canadians = domestic.size();
         int foreigners = international.size();
-        return canadians + foreigners;
+        int total = canadians + foreigners;
+        System.out.println("Total Students: " + total);
     }
 
-    public int getDomesticSize() {
-        return domestic.size();
+    public void getDomesticSize() {
+        System.out.println("Total Domestic Students: " + domestic.size());
     }
 
-    public int getInternationalSize() {
-        return international.size();
+    public void getInternationalSize() {
+        System.out.println("Total International Students: " + international.size());
     }
 
     public void allStudents() {
         int count = 0;
         int counter = 0;
         while (domestic.size() > count) {
-            System.out.println(count + "." + domestic.get(count).getName());
+            System.out.println(domestic.get(count).getName());
             count++;
         }
         while (international.size() > counter) {
-            System.out.println(counter + "." + international.get(counter).getName());
+            System.out.println(international.get(counter).getName());
             counter++;
         }
     }
 
     public void displayPositive() {
-        for (int i = 0; i < domestic.size(); i++) {
-            if (domestic.get(i).getTestReport()) {
-                System.out.println(domestic.get(i).getName());
+        for (Student student : domestic) {
+            if (student.getTestReport()) {
+                System.out.println(student.getName());
             }
         }
-        for (int i = 0; i < international.size(); i++) {
-            if (international.get(i).getTestReport()) {
-                System.out.println(international.get(i).getName());
+        for (Student student : international) {
+            if (student.getTestReport()) {
+                System.out.println(student.getName());
             }
 
         }

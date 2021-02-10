@@ -26,7 +26,7 @@ public class StudentApp {
             displayOptions();
             String choice = option.next();
 
-            if (choice.equals("f")) {
+            if (choice.equals("g")) {
                 proceed = false;
             } else {
                 searchChoice(choice);
@@ -47,6 +47,8 @@ public class StudentApp {
             displayTotalInternational();
         } else if (userInput.equals("e")) {
             displayPositive();
+        } else if (userInput.equals("f")) {
+            displayAll();
         } else {
             System.out.println("Kindly input valid options only.");
         }
@@ -60,7 +62,8 @@ public class StudentApp {
         System.out.println("\nc. Display total students in quarantine");
         System.out.println("\nd. Display total international arrivals");
         System.out.println("\ne. Display students with positive test report");
-        System.out.println("\nf. Do you wish to exit?");
+        System.out.println("\nf. Display all students");
+        System.out.println("\ng. Do you wish to exit?");
 
     }
 
@@ -101,8 +104,8 @@ public class StudentApp {
         ubc.searchName(name);
     }
 
-    public int displayTotal() {
-        return ubc.totalStudents();
+    public void displayTotal() {
+        ubc.totalStudents();
 
     }
 
@@ -117,6 +120,10 @@ public class StudentApp {
     public void displayPositive() {
         ubc.displayPositive();
 
+    }
+
+    public void displayAll() {
+        ubc.allStudents();
     }
 
 }
