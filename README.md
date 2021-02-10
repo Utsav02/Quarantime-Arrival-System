@@ -1,4 +1,4 @@
-# model.model Arrival System
+# Student Arrival System
 
 ##Quarantine Database
 

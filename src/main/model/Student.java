@@ -1,16 +1,18 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.time.LocalDate;
-import java.util.Date;
+
 
 //represents a Student with their name, result of covidTest, quarantineLocation
 public class Student {
 
-    private String name; // name of the student
-    private boolean covidTest; // result of student's covid test
-    private String quarantineLocation; // where student is quarantining themselves in
-    private LocalDate arrivalDate; //date of arrival
-
+    private final String name; // name of the student
+    private final Boolean covidTest; // result of student's covid test
+    private final String quarantineLocation; // where student is quarantining themselves in
+    private final LocalDate arrivalDate; //date of arrival
+    private final String  country;
 
     /*
      * REQUIRES: studentName should be non-zero
@@ -19,11 +21,12 @@ public class Student {
      * Covid test is in boolean True = positive, False = negative
      * location is set to quarantine location of student
      */
-    public Student(String studentName, boolean report, String location, LocalDate arrival) {
+    public Student(String studentName, Boolean report, String location, LocalDate arrival, String departureCountry) {
         name = studentName;
         arrivalDate = arrival;
         quarantineLocation = location;
         covidTest = report;
+        country = departureCountry;
     }
 
     public String getName() {
@@ -40,6 +43,10 @@ public class Student {
 
     public Boolean getTestReport() {
         return covidTest;
+    }
+
+    public String getCountry() {
+        return country;
     }
 
 

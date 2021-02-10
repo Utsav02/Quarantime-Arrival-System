@@ -1,13 +1,16 @@
 package ui;
 
 
+import model.Student;
 import model.University;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 
 
 public class StudentApp {
+    University ubc = new University();
 
     public StudentApp() {
 
@@ -15,6 +18,7 @@ public class StudentApp {
     }
 
     public void runStudentApp() {
+
         Scanner option = new Scanner(System.in);
         boolean proceed = true;
 
@@ -61,28 +65,57 @@ public class StudentApp {
     }
 
     public void addStudent() {
+        Scanner userInput = new Scanner(System.in);
+
+        System.out.println("Name:");
+        String name =  userInput.nextLine();
 
 
+        System.out.println("Staying at:");
+        String location = userInput.nextLine();
+
+
+        System.out.println("Student's Country:");
+        String country = userInput.nextLine();
+
+
+        System.out.println("Report (true/false)");
+        boolean report = userInput.nextBoolean();
+
+        LocalDate  date =  LocalDate.now();
+
+
+        Student j = new Student(name,report,location,date,country);
+
+        if (country.equals("Canada")) {
+            ubc.addToDomestic(j);
+        } else {
+            ubc.addToInternational(j);
+        }
     }
 
-    public String displayStudent() {
+    public void displayStudent() {
         System.out.println("Please enter the name of the student:");
         Scanner userInput = new Scanner(System.in);
         String name =  userInput.next();
-        String result = University.searchName(name);
-        return result;
+        ubc.searchName(name);
+    }
+
+    public int displayTotal() {
+        return ubc.totalStudents();
 
     }
 
-    public void displayTotal() {
-
+    public void displayTotalDomestic() {
+        ubc.getDomesticSize();
     }
 
     public void displayTotalInternational() {
-
+        ubc.getInternationalSize();
     }
 
     public void displayPositive() {
+        ubc.displayPositive();
 
     }
 
