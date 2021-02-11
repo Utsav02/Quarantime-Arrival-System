@@ -105,16 +105,16 @@ public class StudentApp {
     }
 
     public void displayTotal() {
-        ubc.totalStudents();
+        System.out.println("Total Domestic Students: " + ubc.totalStudents());
 
     }
 
     public void displayTotalDomestic() {
-        ubc.getDomesticSize();
+        System.out.println("Total Domestic Students: " + ubc.getDomesticSize());
     }
 
     public void displayTotalInternational() {
-        ubc.getInternationalSize();
+        System.out.println("Total Domestic Students: " + ubc.getInternationalSize());
     }
 
     public void displayPositive() {

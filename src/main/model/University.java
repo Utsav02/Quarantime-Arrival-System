@@ -4,13 +4,14 @@ package model;
 import java.util.ArrayList;
 
 public class University {
+    private ArrayList<Student> domestic;
+    private ArrayList<Student> international;
 
     public University() {
-
+        domestic = new ArrayList<>();
+        international = new ArrayList<>();
     }
 
-    ArrayList<Student> domestic = new ArrayList<>();
-    ArrayList<Student> international = new ArrayList<>();
 
     public void addToDomestic(Student student) {
         domestic.add(student);
@@ -28,10 +29,8 @@ public class University {
                 System.out.println("Staying at: " + value.getLocation());
                 System.out.println("Reached Campus on: " + value.getArrivalDate());
                 System.out.println("Flew in from: " + value.getCountry());
-
             }
         }
-
         for (Student student : international) {
             if (student.getName().equals(name)) {
                 System.out.println("Name: " + student.getName());
@@ -39,26 +38,25 @@ public class University {
                 System.out.println("Staying at: " + student.getLocation());
                 System.out.println("Reached Campus on: " + student.getArrivalDate());
                 System.out.println("Flew in from: " + student.getCountry());
-            } else {
-                System.out.println("Student not found");
             }
         }
 
     }
 
-    public void totalStudents() {
+
+    public int totalStudents() {
         int canadians = domestic.size();
         int foreigners = international.size();
         int total = canadians + foreigners;
-        System.out.println("Total Students: " + total);
+        return total;
     }
 
-    public void getDomesticSize() {
-        System.out.println("Total Domestic Students: " + domestic.size());
+    public int getDomesticSize() {
+        return domestic.size();
     }
 
-    public void getInternationalSize() {
-        System.out.println("Total International Students: " + international.size());
+    public int getInternationalSize() {
+        return international.size();
     }
 
     public void allStudents() {
