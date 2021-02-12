@@ -29,6 +29,22 @@ public class University {
         return international;
     }
 
+    public ArrayList<Student> searchStudent(String name) {
+        ArrayList<Student> result = new ArrayList<>();
+
+        for (Student value : domestic) {
+            if (value.getName().equals(name)) {
+                result.add(value);
+            }
+        }
+        for (Student value : international) {
+            if (value.getName().equals(name)) {
+                result.add(value);
+            }
+        }
+        return result;
+    }
+
 
     public int totalStudents() {
         int canadians = domestic.size();

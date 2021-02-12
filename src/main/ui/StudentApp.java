@@ -5,6 +5,7 @@ import model.Student;
 import model.University;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -70,7 +71,7 @@ public class StudentApp {
         Scanner userInput = new Scanner(System.in);
 
         System.out.println("Name:");
-        String name =  userInput.nextLine();
+        String name = userInput.nextLine();
 
 
         System.out.println("Staying at:");
@@ -84,10 +85,10 @@ public class StudentApp {
         System.out.println("Report (true/false)");
         boolean report = userInput.nextBoolean();
 
-        LocalDate  date =  LocalDate.now();
+        LocalDate date = LocalDate.now();
 
 
-        Student j = new Student(name,report,location,date,country);
+        Student j = new Student(name, report, location, date, country);
 
         if (country.equals("Canada")) {
             ubc.addToDomestic(j);
@@ -96,17 +97,41 @@ public class StudentApp {
         }
     }
 
+    public void displayStudent() {
+        System.out.println("Please enter the name of the student:");
+        Scanner userInput = new Scanner(System.in);
+        String toFind = userInput.next();
+        searchName(toFind);
+    }
+
     public void searchName(String name) {
-        for (Student value : ubc.getDomestic()) {
-            if (value.getName().equals(name)) {
-                System.out.println("Name: " + value.getName());
-                System.out.println("Covid Report: " + value.getTestReport());
-                System.out.println("Staying at: " + value.getLocation());
-                System.out.println("Reached Campus on: " + value.getArrivalDate());
-                System.out.println("Flew in from: " + value.getCountry());
+        ArrayList<Student> result = ubc.searchStudent(name);
+        boolean proceed = true;
+        while (proceed) {
+            if (result.isEmpty()) {
+                System.out.println("No student with such name was found.");
+                proceed = false;
+            } else {
+                System.out.println("Following records with the name given were found");
+                for (Student student : result) {
+                    System.out.println(student.getName());
+                }
+                System.out.println("Kindly confirm the name again :");
+                Scanner userInput = new Scanner(System.in);
+                String toFind = userInput.next();
+                printDetails(toFind);
+                proceed = false;
             }
         }
-        for (Student student : ubc.getInternational()) {
+    }
+
+
+    public void printDetails(String name) {
+        ArrayList<Student> mergedList = new ArrayList<>();
+        mergedList.addAll(ubc.getDomestic());
+        mergedList.addAll(ubc.getInternational());
+
+        for (Student student : mergedList) {
             if (student.getName().equals(name)) {
                 System.out.println("Name: " + student.getName());
                 System.out.println("Covid Report: " + student.getTestReport());
@@ -118,21 +143,10 @@ public class StudentApp {
 
     }
 
-    public void displayStudent() {
-        System.out.println("Please enter the name of the student:");
-        Scanner userInput = new Scanner(System.in);
-        String name =  userInput.next();
-        searchName(name);
-    }
-
 
     public void displayTotal() {
         System.out.println("Total Students: " + ubc.totalStudents());
 
-    }
-
-    public void displayTotalDomestic() {
-        System.out.println("Total Domestic Students: " + ubc.getDomesticSize());
     }
 
     public void displayTotalInternational() {

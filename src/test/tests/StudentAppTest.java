@@ -109,6 +109,14 @@ public class StudentAppTest {
 
     }
 
+    @Test
+    void testSearchStudent() {
+        u1.addToInternational(s3);
+        a2.add(s3);
+        assertEquals(a2,u1.searchStudent("Han"));
+        assertEquals(a1,u1.searchStudent("Max"));
+    }
+
 
 
 
