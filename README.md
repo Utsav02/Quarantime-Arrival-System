@@ -21,8 +21,11 @@ days left and other factors interested me too.
 ##User Story
 The user should be able to
 - add new students to the database
-- delete students from database
-- see where the students are quarantining themselves in
-- see all names of students who have arrived on campus
+- see a particular student's detail
+- see names of all students quarantining on campus
+- retrieve total number of international arrival
+- total number of arrivals
+- retrieve names of students with positive test report
+
 
 :
