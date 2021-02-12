@@ -8,7 +8,6 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 
-
 public class StudentApp {
     University ubc = new University();
 
@@ -97,15 +96,38 @@ public class StudentApp {
         }
     }
 
+    public void searchName(String name) {
+        for (Student value : ubc.getDomestic()) {
+            if (value.getName().equals(name)) {
+                System.out.println("Name: " + value.getName());
+                System.out.println("Covid Report: " + value.getTestReport());
+                System.out.println("Staying at: " + value.getLocation());
+                System.out.println("Reached Campus on: " + value.getArrivalDate());
+                System.out.println("Flew in from: " + value.getCountry());
+            }
+        }
+        for (Student student : ubc.getInternational()) {
+            if (student.getName().equals(name)) {
+                System.out.println("Name: " + student.getName());
+                System.out.println("Covid Report: " + student.getTestReport());
+                System.out.println("Staying at: " + student.getLocation());
+                System.out.println("Reached Campus on: " + student.getArrivalDate());
+                System.out.println("Flew in from: " + student.getCountry());
+            }
+        }
+
+    }
+
     public void displayStudent() {
         System.out.println("Please enter the name of the student:");
         Scanner userInput = new Scanner(System.in);
         String name =  userInput.next();
-        ubc.searchName(name);
+        searchName(name);
     }
 
+
     public void displayTotal() {
-        System.out.println("Total Domestic Students: " + ubc.totalStudents());
+        System.out.println("Total Students: " + ubc.totalStudents());
 
     }
 
@@ -114,16 +136,34 @@ public class StudentApp {
     }
 
     public void displayTotalInternational() {
-        System.out.println("Total Domestic Students: " + ubc.getInternationalSize());
-    }
-
-    public void displayPositive() {
-        ubc.displayPositive();
-
+        System.out.println("Total International Students: " + ubc.getInternationalSize());
     }
 
     public void displayAll() {
-        ubc.allStudents();
+        int count = 0;
+        int counter = 0;
+        while (ubc.getDomestic().size() > count) {
+            System.out.println(ubc.getDomestic().get(count).getName());
+            count++;
+        }
+        while (ubc.getInternational().size() > counter) {
+            System.out.println(ubc.getInternational().get(counter).getName());
+            counter++;
+        }
+    }
+
+    public void displayPositive() {
+        for (Student student : ubc.getDomestic()) {
+            if (student.getTestReport()) {
+                System.out.println(student.getName());
+            }
+        }
+        for (Student student : ubc.getInternational()) {
+            if (student.getTestReport()) {
+                System.out.println(student.getName());
+            }
+
+        }
     }
 
 }

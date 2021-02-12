@@ -24,6 +24,8 @@ public class StudentAppTest {
         s2 = new Student("Earl", true, "Ponds", LocalDate.now(), "USA");
         s3 = new Student("Han", false, "Exchange", LocalDate.now(), "Mexico");
         s4 = new Student("Oleg", true, "Marine Drive", LocalDate.now(), "Canada");
+        a1 = new ArrayList<>();
+        a2 = new ArrayList<>();
         u1 = new University();
     }
 
@@ -66,15 +68,6 @@ public class StudentAppTest {
     }
 
     @Test
-    void testAllStudents() {
-        u1.addToDomestic(s1);
-        u1.addToDomestic(s4);
-        u1.addToInternational(s2);
-        u1.addToInternational(s3);
-
-    }
-
-    @Test
     void testGetDomesticSize() {
         u1.addToDomestic(s1);
         u1.addToDomestic(s4);
@@ -95,6 +88,25 @@ public class StudentAppTest {
         u1.addToDomestic(s1);
         u1.addToDomestic(s4);
         assertEquals(4,u1.totalStudents());
+    }
+
+    @Test
+    void testGetDomestic() {
+        u1.addToDomestic(s1);
+        u1.addToDomestic(s4);
+        a1.add(s1);
+        a1.add(s4);
+        assertEquals(a1,u1.getDomestic());
+
+    }
+    @Test
+    void testGetInternational() {
+        u1.addToInternational(s2);
+        u1.addToInternational(s3);
+        a2.add(s2);
+        a2.add(s3);
+        assertEquals(a2,u1.getInternational());
+
     }
 
 
