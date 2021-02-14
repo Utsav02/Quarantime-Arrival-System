@@ -15,7 +15,7 @@ public class Student {
     private final String  country;
 
     /*
-     * REQUIRES: studentName should be non-zero
+     * REQUIRES: studentName should be string, Date in YYYY-MM-DD format
      * EFFECTS: name of student is set to studentName;
      *          arrival is set to arrivalDate
      * Covid test is in boolean True = positive, False = negative
@@ -29,22 +29,29 @@ public class Student {
         country = departureCountry;
     }
 
+    // EFFECTS: returns name of student
+
     public String getName() {
         return name;
     }
+
+    // EFFECTS: returns location of student
 
     public String getLocation() {
         return quarantineLocation;
     }
 
+    // EFFECTS: returns arrival date of student
     public LocalDate getArrivalDate() {
         return arrivalDate;
     }
 
+    // EFFECTS: returns result of void test of student
     public Boolean getTestReport() {
         return covidTest;
     }
 
+    // EFFECTS: returns country of student
     public String getCountry() {
         return country;
     }

@@ -8,15 +8,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+// Student Arrival Application
 public class StudentApp {
     University ubc = new University();
 
+    // EFFECTS: runs the student arrival application
     public StudentApp() {
 
         runStudentApp();
     }
 
+    // MODIFIES: this
+    //EFFECTS : processes user's input
     public void runStudentApp() {
 
         Scanner option = new Scanner(System.in);
@@ -36,6 +39,8 @@ public class StudentApp {
         System.out.println("Thank you and have a nice day!");
     }
 
+    // MODIFIES: this
+    //EFFECTS : processes user's input
     public void searchChoice(String userInput) {
         if (userInput.equals("a")) {
             addStudent();
@@ -54,6 +59,7 @@ public class StudentApp {
         }
     }
 
+    //EFFECTS : displays options to user
     public void displayOptions() {
         System.out.println("What would you like to do today:");
         System.out.println("Please choose an option:");
@@ -67,6 +73,8 @@ public class StudentApp {
 
     }
 
+    //MODIFIES : this
+    //EFFECTS  : adds student details to appropriate list
     public void addStudent() {
         Scanner userInput = new Scanner(System.in);
 
@@ -97,6 +105,8 @@ public class StudentApp {
         }
     }
 
+    //REQUIRES : name of Student
+    //EFFECTS  : returns Student Details
     public void displayStudent() {
         System.out.println("Please enter the name of the student:");
         Scanner userInput = new Scanner(System.in);
@@ -104,6 +114,8 @@ public class StudentApp {
         searchName(toFind);
     }
 
+    // Requires : name of Student
+    // Returns : list of student with the name
     public void searchName(String name) {
         ArrayList<Student> result = ubc.searchStudent(name);
         boolean proceed = true;
@@ -125,7 +137,8 @@ public class StudentApp {
         }
     }
 
-
+    // REQUIRES: name of student
+    // EFFECTS : returns student's details
     public void printDetails(String name) {
         ArrayList<Student> mergedList = new ArrayList<>();
         mergedList.addAll(ubc.getDomestic());
@@ -143,16 +156,18 @@ public class StudentApp {
 
     }
 
-
+    // EFFECTS : displays total number of students
     public void displayTotal() {
         System.out.println("Total Students: " + ubc.totalStudents());
 
     }
 
+    // EFFECTS : displays total number of international students
     public void displayTotalInternational() {
         System.out.println("Total International Students: " + ubc.getInternationalSize());
     }
 
+    //// EFFECTS : displays names of all students
     public void displayAll() {
         int count = 0;
         int counter = 0;
@@ -166,6 +181,7 @@ public class StudentApp {
         }
     }
 
+    // EFFECTS : displays names of students with positive covid-19 report
     public void displayPositive() {
         for (Student student : ubc.getDomestic()) {
             if (student.getTestReport()) {

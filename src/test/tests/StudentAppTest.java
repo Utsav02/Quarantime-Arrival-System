@@ -8,6 +8,7 @@ import model.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+// Unit tests for Student and University class
 public class StudentAppTest {
 
     Student s1;
