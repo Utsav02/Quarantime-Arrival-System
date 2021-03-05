@@ -1,0 +1,17 @@
+{
+    "domestic": [{
+        "date": "2021-03-06",
+        "country": "Canada",
+        "name": "Ben",
+        "covidTest": true,
+        "quarantineLocation": "Ten"
+    }],
+    "name": "University of British Columbia",
+    "international": [{
+        "date": "2021-03-02",
+        "country": "India",
+        "name": "Utsav",
+        "covidTest": false,
+        "quarantineLocation": "Ponds"
+    }]
+}

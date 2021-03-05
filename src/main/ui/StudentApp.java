@@ -3,18 +3,27 @@ package ui;
 
 import model.Student;
 import model.University;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Student Arrival Application
+// Represents a Student Arrival Application
 public class StudentApp {
-    University ubc = new University();
+    private static final String JSON_LOC = "./data/ubc.json";
+    private final JsonWriter jsonWriter;
+    private final JsonReader jsonReader;
+    private University ubc;
 
     // EFFECTS: runs the student arrival application
     public StudentApp() {
-
+        ubc = new University("University of British Columbia");
+        jsonWriter = new JsonWriter(JSON_LOC);
+        jsonReader = new JsonReader(JSON_LOC);
         runStudentApp();
     }
 
@@ -29,7 +38,7 @@ public class StudentApp {
             displayOptions();
             String choice = option.next();
 
-            if (choice.equals("g")) {
+            if (choice.equals("i")) {
                 proceed = false;
             } else {
                 searchChoice(choice);
@@ -54,6 +63,10 @@ public class StudentApp {
             displayPositive();
         } else if (userInput.equals("f")) {
             displayAll();
+        } else if (userInput.equals("g")) {
+            saveUniversity();
+        } else if (userInput.equals("h")) {
+            loadUniversity();
         } else {
             System.out.println("Kindly input valid options only.");
         }
@@ -69,7 +82,9 @@ public class StudentApp {
         System.out.println("\nd. Display total international arrivals");
         System.out.println("\ne. Display students with positive test report");
         System.out.println("\nf. Display all students");
-        System.out.println("\ng. Do you wish to exit?");
+        System.out.println("\ng. Save Data");
+        System.out.println("\nh. Load Data");
+        System.out.println("\ni. Do you wish to exit?");
 
     }
 
@@ -98,11 +113,8 @@ public class StudentApp {
 
         Student j = new Student(name, report, location, date, country);
 
-        if (country.equals("Canada")) {
-            ubc.addToDomestic(j);
-        } else {
-            ubc.addToInternational(j);
-        }
+        ubc.addStudent(j);
+
     }
 
     //REQUIRES : name of Student
@@ -196,4 +208,29 @@ public class StudentApp {
         }
     }
 
+    // EFFECTS: saves the workroom to file
+    public void saveUniversity() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(ubc);
+            jsonWriter.close();
+            System.out.println("Saved " + " to " + JSON_LOC);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_LOC);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadUniversity() {
+        try {
+            ubc = jsonReader.read();
+            System.out.println("Loaded " + "from " + JSON_LOC);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_LOC);
+        }
+    }
+
 }
+
+

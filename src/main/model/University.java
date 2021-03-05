@@ -1,17 +1,24 @@
 package model;
 
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 
- // represents a university with domestic and international students arrival list
-public class University {
+// represents a university with domestic and international students arrival list
+public class University implements Writable {
+    private String name;
     private final ArrayList<Student> domestic;
     private final ArrayList<Student> international;
 
     //constructs university with empty domestic and international student Arraylist.
-    public University() {
+    public University(String name) {
+        this.name = name;
         domestic = new ArrayList<>();
         international = new ArrayList<>();
+
     }
 
     /*
@@ -23,13 +30,21 @@ public class University {
         domestic.add(student);
     }
 
-     /*
-     REQUIRES: Student input
-     MODIFIES: this
-     EFFECTS : adds the student name to the list
-      */
+    /*
+    REQUIRES: Student input
+    MODIFIES: this
+    EFFECTS : adds the student name to the list
+     */
     public void addToInternational(Student student) {
         international.add(student);
+    }
+
+    public void addStudent(Student student) {
+        if (!student.getCountry().equals("Canada")) {
+            addToInternational(student);
+        } else {
+            addToDomestic(student);
+        }
     }
 
     public ArrayList<Student> getDomestic() {
@@ -76,10 +91,46 @@ public class University {
         return domestic.size();
     }
 
-     // EFFECTS: returns total number of international arrivals
+    // EFFECTS: returns total number of international arrivals
 
     public int getInternationalSize() {
         return international.size();
     }
 
+    //EFFECTS: returns name of University
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("domestic", domesticToJson());
+        json.put("international", internationalToJson());
+        return json;
+    }
+
+    // EFFECTS: returns domestic students in this university as a JSON array
+    private JSONArray domesticToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Student s : domestic) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
+    }
+
+    // EFFECTS: returns international students in this university as a JSON array
+    private JSONArray internationalToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Student s : international) {
+            jsonArray.put(s.toJson());
+        }
+
+        return jsonArray;
+    }
 }
+

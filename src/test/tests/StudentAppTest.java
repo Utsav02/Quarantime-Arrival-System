@@ -18,16 +18,17 @@ public class StudentAppTest {
     University u1;
     ArrayList<Student> a1;
     ArrayList<Student> a2;
+    LocalDate date = LocalDate.of(2021, 3, 6);
 
     @BeforeEach
     void runBefore() {
-        s1 = new Student("Max", false, "Marine Drive", LocalDate.now(), "Canada");
-        s2 = new Student("Earl", true, "Ponds", LocalDate.now(), "USA");
-        s3 = new Student("Han", false, "Exchange", LocalDate.now(), "Mexico");
-        s4 = new Student("Oleg", true, "Marine Drive", LocalDate.now(), "Canada");
+        s1 = new Student("Max", false, "Marine Drive", date, "Canada");
+        s2 = new Student("Earl", true, "Ponds", date, "USA");
+        s3 = new Student("Han", false, "Exchange", date, "Mexico");
+        s4 = new Student("Oleg", true, "Marine Drive", date, "Canada");
         a1 = new ArrayList<>();
         a2 = new ArrayList<>();
-        u1 = new University();
+        u1 = new University("test");
     }
 
     @Test
@@ -57,15 +58,15 @@ public class StudentAppTest {
     void testGetCountry() {
         assertEquals("Canada",s1.getCountry());
         assertEquals("Mexico",s3.getCountry());
-        assertEquals("USA",s2.getCountry());
+        assertEquals("Usa",s2.getCountry());
         assertEquals("Canada",s4.getCountry());
     }
     @Test
     void testGetDate() {
-        assertEquals(LocalDate.now(),s1.getArrivalDate());
-        assertEquals(LocalDate.now(),s2.getArrivalDate());
-        assertEquals(LocalDate.now(),s3.getArrivalDate());
-        assertEquals(LocalDate.now(),s4.getArrivalDate());
+        assertEquals("2021-03-06",s1.getArrivalDate());
+        assertEquals("2021-03-06",s2.getArrivalDate());
+        assertEquals("2021-03-06",s3.getArrivalDate());
+        assertEquals("2021-03-06",s4.getArrivalDate());
     }
 
     @Test
