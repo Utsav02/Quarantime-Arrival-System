@@ -59,6 +59,7 @@ public class Student implements Writable {
         return country;
     }
 
+    // EFFECTS: retruns json object with student details
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

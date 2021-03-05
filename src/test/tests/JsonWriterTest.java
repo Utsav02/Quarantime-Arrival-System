@@ -8,11 +8,12 @@ import persistence.JsonWriter;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//Unit Tests for JsonWriter class
 public class JsonWriterTest{
 
     @Test

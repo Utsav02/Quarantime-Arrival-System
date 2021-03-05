@@ -47,10 +47,12 @@ public class University implements Writable {
         }
     }
 
+    //EFFECTS returns domestic student list
     public ArrayList<Student> getDomestic() {
         return domestic;
     }
 
+    //EFFECTS returns international student list
     public ArrayList<Student> getInternational() {
         return international;
     }
@@ -102,6 +104,7 @@ public class University implements Writable {
         return name;
     }
 
+    //EFFECTS: returns json object with University details in it
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

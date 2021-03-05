@@ -26,6 +26,9 @@ The user should be able to
 - retrieve total number of international arrival
 - total number of arrivals
 - retrieve names of students with positive test report
+- save details of students entered
+- load previously saved details of students and add more to the same file
+
 
 
 :
