@@ -57,26 +57,45 @@ public class University implements Writable {
         return international;
     }
 
+    public ArrayList<Student> positiveList() {
+        ArrayList<Student> list1 = new ArrayList<>();
+
+        for (Student student : this.getDomestic()) {
+            if (student.getTestReport()) {
+                list1.add(student);
+            }
+        }
+        for (Student student : this.getInternational()) {
+            if (student.getTestReport()) {
+                list1.add(student);
+            }
+
+        }
+        return list1;
+    }
+
     /*
     REQUIRES: Name of Student
     EFFECTS: if student name is there, adds student to list
              checks for multiple similar student names
              returns list
      */
-    public ArrayList<Student> searchStudent(String name) {
-        ArrayList<Student> result = new ArrayList<>();
+    public Student searchStudent(String name) {
+        Student found = null;
 
         for (Student value : domestic) {
             if (value.getName().equals(name)) {
-                result.add(value);
+                found = value;
             }
         }
         for (Student value : international) {
             if (value.getName().equals(name)) {
-                result.add(value);
+                found = value;
             }
         }
-        return result;
+
+        return found;
+
     }
 
     // EFFECTS: returns total number of students

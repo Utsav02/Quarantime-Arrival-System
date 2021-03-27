@@ -1,17 +1,49 @@
 {
-    "domestic": [{
-        "date": "2021-03-06",
-        "country": "Canada",
-        "name": "Ben",
-        "covidTest": true,
-        "quarantineLocation": "Ten"
-    }],
+    "domestic": [
+        {
+            "date": "2021-03-27",
+            "country": "Canada",
+            "name": "Thomas",
+            "covidTest": false,
+            "quarantineLocation": "Vancouver"
+        },
+        {
+            "date": "2021-03-27",
+            "country": "Canada",
+            "name": "John Doe",
+            "covidTest": true,
+            "quarantineLocation": "Exchange"
+        }
+    ],
     "name": "University of British Columbia",
-    "international": [{
-        "date": "2021-03-02",
-        "country": "India",
-        "name": "Utsav",
-        "covidTest": false,
-        "quarantineLocation": "Ponds"
-    }]
+    "international": [
+        {
+            "date": "2021-03-27",
+            "country": "India",
+            "name": "Utsav",
+            "covidTest": false,
+            "quarantineLocation": "Marine Drive"
+        },
+        {
+            "date": "2021-03-27",
+            "country": "India",
+            "name": "Euro",
+            "covidTest": false,
+            "quarantineLocation": "Sapna sangeeta"
+        },
+        {
+            "date": "2021-03-27",
+            "country": "India",
+            "name": "Utsav",
+            "covidTest": false,
+            "quarantineLocation": "Marine Drive"
+        },
+        {
+            "date": "2021-03-27",
+            "country": "Italy",
+            "name": "Navansh",
+            "covidTest": true,
+            "quarantineLocation": "Manormaganj"
+        }
+    ]
 }
