@@ -57,6 +57,8 @@ public class University implements Writable {
         return international;
     }
 
+
+    //EFFECTS: returns a list of student with positive test report
     public ArrayList<Student> positiveList() {
         ArrayList<Student> list1 = new ArrayList<>();
 
@@ -75,10 +77,8 @@ public class University implements Writable {
     }
 
     /*
-    REQUIRES: Name of Student
-    EFFECTS: if student name is there, adds student to list
-             checks for multiple similar student names
-             returns list
+    REQUIRES: Name of Student, no duplicates
+    EFFECTS: if student name is there, returns it
      */
     public Student searchStudent(String name) {
         Student found = null;

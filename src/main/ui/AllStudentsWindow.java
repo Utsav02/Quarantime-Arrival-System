@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//New frame to display all students and search up a student
 
 public class AllStudentsWindow implements ActionListener {
     University uni;
@@ -33,6 +34,7 @@ public class AllStudentsWindow implements ActionListener {
 
     }
 
+    //EFFECTS prepares the main window
     public void prepareGUI() {
         allStudentsWindow.setTitle("List of All Students");
         allStudentsWindow.getContentPane().setLayout(null);
@@ -40,12 +42,14 @@ public class AllStudentsWindow implements ActionListener {
         allStudentsWindow.setSize(1000, 1000);
     }
 
+    //EFFECTS prepares the text fields for the window
     public void textProperties() {
 
         searchName.setBounds(150,120,100,20);
         allStudentsWindow.add(searchName);
     }
 
+    //EFFECTS prepares the buttons for the window
     public void buttonProperties() {
 
         searchButton.setBounds(270,120,100,20);
@@ -56,8 +60,7 @@ public class AllStudentsWindow implements ActionListener {
 
     }
 
-
-
+    //EFFECTS prepares the labels for the window
     public void labelProperties() {
         JLabel heading = new JLabel();
         JLabel search = new JLabel("Search Student");
@@ -74,7 +77,7 @@ public class AllStudentsWindow implements ActionListener {
         studentTest.setBounds(500,450,300,50);
     }
 
-
+    //EFFECTS: constructs a scroll panel with all students name in it
     public void panelProperties() {
         ArrayList<Student> resultList = new ArrayList<>();
         resultList.addAll(uni.getDomestic());
@@ -105,6 +108,7 @@ public class AllStudentsWindow implements ActionListener {
         }
     }
 
+    //EFFECTS: returns details of student onto screen, message if student not found
     public void searchStudent() {
         String name = searchName.getText();
         Student found = uni.searchStudent(name);
@@ -122,6 +126,7 @@ public class AllStudentsWindow implements ActionListener {
         }
     }
 
+    //EFFECTS: displays details on window
     public void displayDetails(String name, String loc, String date, Boolean value,String place) {
         studentHeading.setText("Details of entered Student:");
         studentName.setText("Name: " + name);

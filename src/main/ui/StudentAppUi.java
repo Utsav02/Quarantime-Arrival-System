@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+//StudentApp GUI
+
 
 public class StudentAppUi implements ActionListener {
 
@@ -58,6 +60,9 @@ public class StudentAppUi implements ActionListener {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: prepares the window main
+
     public void prepareGUI() {
 
         window.setTitle("Student Arrival System");
@@ -68,6 +73,9 @@ public class StudentAppUi implements ActionListener {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     }
+
+    //MODIFIES: this
+    //EFFECTS: prepares the buttons on window
 
     public void buttonProperties() {
         addStudentButton.setBounds(20, 450, 200, 50);
@@ -96,6 +104,9 @@ public class StudentAppUi implements ActionListener {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: prepares the test fields on window
+
     public void textFieldProperties() {
 
         nameText.setBounds(20,250,150,20);
@@ -108,6 +119,9 @@ public class StudentAppUi implements ActionListener {
         window.add(countryText);
         window.add(reportText);
     }
+
+    //MODIFIES: this
+    //EFFECTS: prepares the label properties on window
 
     public void labelProperties() {
         name.setText("Name of Student");
@@ -135,7 +149,8 @@ public class StudentAppUi implements ActionListener {
 
     }
 
-
+    //Require: event
+    //EFFECTS: determines what to do based on which button is clicked
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -162,6 +177,7 @@ public class StudentAppUi implements ActionListener {
 
     }
 
+    //EFFECTS: Adds the student entered by user to university
     public void addStudent() {
         String name = nameText.getText();
         String location = locationText.getText();
@@ -181,6 +197,7 @@ public class StudentAppUi implements ActionListener {
 
     }
 
+    //EFFECTS: clears text fields after student is added
     public void clearTextFields() {
         nameText.setText("");
         locationText.setText("");
@@ -188,20 +205,23 @@ public class StudentAppUi implements ActionListener {
         reportText.setText("");
     }
 
+    //EFFECTS: Opens a new window to display positive students
     public void displayPositive() {
         new PositiveWindow(ubc);
     }
 
+    //EFFECTS: Opens a new window to display all students
     public void displayAll() {
         new AllStudentsWindow(ubc);
     }
 
+    //EFFECTS: displays logo on frame title bar and inside the window
     public void displayLogo() {
         ImageIcon imageIcon = new ImageIcon("./data/logo2.png");
         Image icon = Toolkit.getDefaultToolkit().getImage("./data/download.png");
         JLabel imageLabel = new JLabel(imageIcon);
 
-//        imageLabel.setBounds(100,100,800,500);
+
         imageLabel.setBounds(new Rectangle(1000,200));
         window.add(imageLabel,BorderLayout.NORTH);
         window.setIconImage(icon);
@@ -209,6 +229,7 @@ public class StudentAppUi implements ActionListener {
 
     }
 
+    //EFFECTS: saves data to specified location
     private void saveData() {
         try {
             jsonWriter.open();

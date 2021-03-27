@@ -117,12 +117,26 @@ public class StudentAppTest {
         a2.add(s3);
         u1.addToDomestic(s1);
         a1.add(s1);
-        assertEquals(a1,u1.searchStudent("Max"));
-        assertEquals(a2,u1.searchStudent("Han"));
-        assertEquals(a1,u1.searchStudent("Max"));
+        assertEquals(s1,u1.searchStudent("Max"));
+        assertEquals(s3,u1.searchStudent("Han"));
+        assertEquals(s1,u1.searchStudent("Max"));
+        assertNull(u1.searchStudent("Caroline"));
 
+    }
 
-
+    @Test
+    void testPositiveList() {
+       u1.addStudent(s1);
+       u1.addStudent(s4);
+       ArrayList<Student> testList = u1.positiveList();
+       a1.add(s4);
+       assertEquals(a1,testList);
+       u1.addStudent(s2);
+       u1.addStudent(s3);
+       ArrayList<Student> testListNew = u1.positiveList();
+       a2.add(s4);
+       a2.add(s2);
+       assertEquals(a2,testListNew);
     }
 
 }
