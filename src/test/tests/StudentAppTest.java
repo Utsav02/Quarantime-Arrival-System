@@ -139,6 +139,45 @@ public class StudentAppTest {
        assertEquals(a2,testListNew);
     }
 
+    @Test
+    void testAssignUni() {
+        s1.assignToUni(u1);
+        assertEquals(u1,s1.getAssignedUni());
+    }
+
+    @Test
+    void testGetUniName() {
+        assertEquals("test",u1.getName());
+    }
+
+    @Test
+    void testRemove() {
+        u1.addStudent(s1);
+        u1.addStudent(s4);
+        a1.add(s1);
+        a1.add(s4);
+        assertEquals(2,u1.totalStudents());
+        assertEquals(a1,u1.getDomestic());
+        u1.removeStudent(s1);
+        a1.remove(s1);
+        assertEquals(1,u1.totalStudents());
+        assertEquals(a1,u1.getDomestic());
+        s4.removeFromUni();
+        assertEquals(0,u1.totalStudents());
+        a1.remove(s4);
+        u1.addStudent(s2);
+        u1.addStudent(s3);
+        a1.add(s2);
+        a1.add(s3);
+        assertEquals(2,u1.totalStudents());
+        assertEquals(a1,u1.getInternational());
+        u1.removeStudent(s2);
+        a1.remove(s2);
+        assertEquals(1,u1.totalStudents());
+        assertEquals(a1,u1.getInternational());
+
+
+    }
 }
 
 

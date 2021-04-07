@@ -30,5 +30,10 @@ The user should be able to
 - load previously saved details of students and add more to the same file
 
 
+##Phase 4: Task 2
+Established Bi-directional relationship between University and Student classes.
 
-:
+##Phase 4: Task 3
+The UML Diagram has been included in pdf form. Given time, I would try to make a class which would have all properties 
+required for a new window in an ongoing program like the project has in case of Positive and All Student window. Both 
+share almost the same code, so I would try to have them extend that class and override appropriate methods.

@@ -20,11 +20,11 @@
 //    private University ubc;
 //
 //    // EFFECTS: runs the student arrival application
-//  //  public StudentApp() {
+//    public StudentApp() {
 //        ubc = new University("University of British Columbia");
 //        jsonWriter = new JsonWriter(JSON_LOC);
 //        jsonReader = new JsonReader(JSON_LOC);
-//       // runStudentApp();
+//        runStudentApp();
 //    }
 //
 //    // MODIFIES: this
@@ -129,17 +129,13 @@
 //    // Requires : name of Student
 //    // Returns : list of student with the name
 //    public void searchName(String name) {
-//        ArrayList<Student> result = ubc.searchStudent(name);
+//        Student result = ubc.searchStudent(name);
 //        boolean proceed = true;
 //        while (proceed) {
-//            if (result.isEmpty()) {
+//            if (result == null) {
 //                System.out.println("No student with such name was found.");
 //                proceed = false;
 //            } else {
-//                System.out.println("Following records with the name given were found");
-//                for (Student student : result) {
-//                    System.out.println(student.getName());
-//                }
 //                System.out.println("Kindly confirm the name again :");
 //                Scanner userInput = new Scanner(System.in);
 //                String toFind = userInput.next();

@@ -19,6 +19,8 @@ public class University implements Writable {
         domestic = new ArrayList<>();
         international = new ArrayList<>();
 
+
+
     }
 
     /*
@@ -33,17 +35,25 @@ public class University implements Writable {
     /*
     REQUIRES: Student input
     MODIFIES: this
-    EFFECTS : adds the student name to the list
+    EFFECTS : adds the student name to the respective list and main list
      */
     public void addToInternational(Student student) {
         international.add(student);
     }
 
+    /*
+   REQUIRES: Student input name should not be same to ones already present
+   MODIFIES: this
+   EFFECTS : adds the student name to the respective list
+    */
     public void addStudent(Student student) {
-        if (!student.getCountry().equals("Canada")) {
-            addToInternational(student);
-        } else {
-            addToDomestic(student);
+        if (this.searchStudent(student.getName()) == null) {
+            if (!student.getCountry().equals("Canada")) {
+                addToInternational(student);
+            } else {
+                addToDomestic(student);
+            }
+            student.assignToUni(this);
         }
     }
 
@@ -121,6 +131,20 @@ public class University implements Writable {
     //EFFECTS: returns name of University
     public String getName() {
         return name;
+    }
+
+    // MODIFIES: this, student
+    // EFFECTS: removes student from this university
+    public void removeStudent(Student student) {
+        if (domestic.contains(student)) {
+            domestic.remove(student);
+            student.removeFromUni();
+        }
+        if (international.contains(student)) {
+            international.remove(student);
+            student.removeFromUni();
+        }
+
     }
 
     //EFFECTS: returns json object with University details in it
